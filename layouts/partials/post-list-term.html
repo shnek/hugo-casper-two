@@ -21,7 +21,7 @@
               <h2 class="post-card-title">{{.Title}}</h2>
           </header>
           <section class="post-card-excerpt">
-              {{ if .Description }} 
+              {{ if .Description }}
                 <p>{{ .Description | markdownify }}</p>
               {{else}}
                 <p>{{ .Summary | plainify | safeHTML }}{{ if .Truncated }} ... {{end}} </p>
