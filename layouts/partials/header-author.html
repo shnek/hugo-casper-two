@@ -1,4 +1,4 @@
-{{$author := (index (where .Site.Params.authors "nick" .Page.Title) 0)}}
+{{$author := (index (where .Site.Params.authors "nick" (lower .Page.Title)) 0)}}
 {{ if $author.background }}
 <header class="site-header outer" style="background-image: url({{$author.background}})">
 {{ else }}
