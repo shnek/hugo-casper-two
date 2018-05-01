@@ -12,14 +12,17 @@
     {{end}}
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="{{ .Permalink }}">
-          <header class="post-card-header">
-              {{if .Params.tags }}<span class="post-card-tags">{{ range $index, $tag := .Params.tags }}
-              #{{$tag}} {{end}} </span>
-              {{ end }}
-              <h2 class="post-card-title">{{.Title}}</h2>
-          </header>
-      </a>
+    <div class="post-card-content-link">
+        {{if .Params.tags }}
+        <span class="post-card-tags">{{ range $index, $tag := .Params.tags }}
+            <a href="/tags/{{lower $tag}}"> #{{$tag}}</a>{{end}} </span>
+        {{ end }}
+        <a href="{{ .Permalink }}" style="text-decoration: none; color: rgb(21,23,26)">
+            <header class="post-card-header">
+                <h2 class="post-card-title">{{.Title}}</h2>
+            </header>
+        </a>
+    </div>
       <section class="post-card-excerpt" style="padding: 0 25px;">
           {{ .Content }}
       </section>

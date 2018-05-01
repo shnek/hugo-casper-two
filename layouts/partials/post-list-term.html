@@ -13,22 +13,25 @@
     {{end}}
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="{{ .Permalink }}">
-          <header class="post-card-header">
-               {{if .Params.tags }}
-              <span class="post-card-tags">{{ range $index, $tag := .Params.tags }}
-                 #{{$tag}}{{end}} </span>
-              {{ end }}
+      <div class="post-card-content">
+        <div class="post-card-content-link">
+          {{if .Params.tags }}
+          <span class="post-card-tags">{{ range $index, $tag := .Params.tags }}
+            <a href="/tags/{{lower $tag}}"> #{{$tag}}</a>{{end}} </span>
+          {{ end }}
+          <a href="{{ .Permalink }}" style="text-decoration: none; color: rgb(21,23,26)">
+            <header class="post-card-header">
               <h2 class="post-card-title">{{.Title}}</h2>
-          </header>
-          <section class="post-card-excerpt">
+            </header>
+            <section class="post-card-excerpt" style="color:  rgb(60,72,78)">
               {{ if .Description }}
-                <p>{{ .Description | markdownify }}</p>
+              <p>{{ .Description | markdownify }}</p>
               {{else}}
-                <p>{{ .Summary | plainify | safeHTML }}{{ if .Truncated }} ... {{end}} </p>
+              <p>{{ .Summary | plainify | safeHTML }}{{ if .Truncated }} ... {{end}} </p>
               {{end}}
-          </section>
-      </a>
+            </section>
+          </a>
+        </div>
 
       <footer class="post-card-meta">
           <img class="author-profile-image" src="{{ (.Params.authorAvatar | default .Site.Params.authorAvatar) | absURL}}" alt="Author" />
