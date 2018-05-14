@@ -29,11 +29,11 @@
 }
 
 .newer-posts {
-    left: 0;
+    right: 0;
 }
 
 .older-posts {
-    right: 0;
+    left: 0;
 }
 
 .site-footer {

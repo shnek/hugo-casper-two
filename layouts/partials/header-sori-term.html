@@ -1,8 +1,9 @@
-<header class="site-header outer">
+
+<header class="site-header outer term" {{if .Site.Params.cover}} style="background-image: url({{.Site.Params.cover | absURL}})" {{end}}>
   <div class="inner">
     <nav class="site-nav">
       <div class="site-nav-left">{{ if .Site.Params.logo }}
-        <a class="site-nav-logo" href="#">
+        <a class="site-nav-logo" href="/">
           <img src="{{ .Site.Params.logo  | absURL}}" alt="{{ .Site.Params.Title }}" />
         </a>{{end}}
 
@@ -67,7 +68,7 @@
     <h1 class="site-title">{{.Title | title}}</h1>
 
     <h2 class="site-description">&#x2F;&nbsp; {{ $data := .Data }} {{ range $key, $value := .Data.Terms.Alphabetical }}
-      <a href="{{ $.Site.BaseURL }}{{ $data.Plural }}/{{ $value.Name | urlize }}"> {{ $value.Name }} </a> ({{ $value.Count }})&nbsp;&#x2F;&nbsp; {{ end }}
+      <a href="{{ $.Site.BaseURL }}/{{ $data.Plural }}/{{ $value.Name | urlize }}"> {{ $value.Name }} </a> ({{ $value.Count }})&nbsp;&#x2F;&nbsp; {{ end }}
     </h2>
   </div>
   </div>

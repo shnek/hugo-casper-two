@@ -8,7 +8,7 @@
     </a>
     {{else}}
     <a class="post-card-image-link" href="{{ .Permalink }}">
-      <div class="post-card-image" style="background-image: url({{$.Site.BaseURL}}defimg/{{ index (seq 7 | shuffle) 0 }}.jpg)"></div>
+      <div class="post-card-image" style="background-image: url(/defimg/{{ index (seq 1 | shuffle) 0 }}.png)"></div>
     </a>
     {{end}}
 
@@ -25,7 +25,7 @@
             </header>
             <section class="post-card-excerpt" style="color:  rgb(60,72,78)">
               {{ if .Description }}
-              <p>{{ .Description | markdownify }}</p>
+              <p>{{ .Description | markdownify }}</p>Z
               {{else}}
               <p>{{ .Summary | plainify | safeHTML }}{{ if .Truncated }} ... {{end}} </p>
               {{end}}
@@ -34,8 +34,10 @@
         </div>
 
       <footer class="post-card-meta">
-          <img class="author-profile-image" src="{{ (.Params.authorAvatar | default .Site.Params.authorAvatar) | absURL}}" alt="Author" />
-          <span class="post-card-author"><a href="/">{{.Params.author | default .Site.Params.author}}</a></span>
+         {{$author := (index (where .Site.Params.authors "name" .Params.author) 0)}}
+          <img class="author-profile-image" src="{{ ($author.image | default .Site.Params.authorAvatar) | absURL}}"
+            alt="Author" />
+          <span class="post-card-author"><a href="/authors/{{$author.nick}}">{{.Params.author | default .Site.Params.author}}</a></span>
       </footer>
     </div>
 </article>

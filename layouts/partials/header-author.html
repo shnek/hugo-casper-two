@@ -2,12 +2,12 @@
 {{ if $author.background }}
 <header class="site-header outer" style="background-image: url({{$author.background}})">
 {{ else }}
-<header class="site-header outer">
+<header class="site-header outer" style="background-image: url(/defimg/banner.jpg)">
 {{ end }}
     <div class="inner">
         <nav class="site-nav">
             <div class="site-nav-left">{{ if .Site.Params.logo }}
-                <a class="site-nav-logo" href="#">
+                <a class="site-nav-logo" href="/">
                     <img src="{{ .Site.Params.logo  | absURL}}" alt="{{ .Site.Params.Title }}" />
                 </a>{{end}}
 
@@ -73,7 +73,7 @@
             {{ if $author.image }}
             <img class="author-profile-image" src="{{$author.image}}">
             {{ else }}
-            <img class="author-profile-image" src="/defimg/user-icon.svg">
+            <img class="author-profile-image" src="defimg/user-icon.svg">
             {{ end }}
             <h1 class="site-title">{{$author.name}}</h1>
             <h2 class="author-bio">{{$author.bio}}</h2>
